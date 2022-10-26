@@ -6,10 +6,11 @@ public class BoardVO {
 	
 	private int bno;
 	private String title;
-	private String contetn;
+	private String content;
 	private String writer;
 	private Date regDate;
 	private int viewCnt;
+	
 	
 	
 	public int getBno() {
@@ -24,11 +25,11 @@ public class BoardVO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getContetn() {
-		return contetn;
+	public String getContent() {
+		return content;
 	}
-	public void setContetn(String contetn) {
-		this.contetn = contetn;
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public String getWriter() {
 		return writer;
@@ -48,6 +49,8 @@ public class BoardVO {
 	public void setViewCnt(int viewCnt) {
 		this.viewCnt = viewCnt;
 	}
+	
+	
 	
 	
 

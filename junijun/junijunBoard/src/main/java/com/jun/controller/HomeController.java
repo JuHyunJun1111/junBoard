@@ -1,4 +1,4 @@
-package com.jun.controlle;
+package com.jun.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -22,9 +22,9 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("안녕하세요.", locale);
+		logger.info("홈화면 진입.", locale);
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
