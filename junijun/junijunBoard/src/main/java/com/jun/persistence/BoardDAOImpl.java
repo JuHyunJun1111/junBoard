@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.jun.domain.BoardVO;
+import com.jun.domain.Criteria;
+import com.jun.domain.SearchCriteria;
 
 
 @Repository
@@ -52,6 +54,34 @@ public class BoardDAOImpl implements BoardDAO {
 	public List<BoardVO> list() throws Exception {
 		// TODO Auto-generated method stub
 		return sql.selectList(namespace + ".list");
+	}
+	
+	//목록 + 페이징
+	@Override
+	public List<BoardVO> listPage(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectList(namespace + ".listPage", cri);
+	}
+	
+	//총 갯수
+	@Override
+	public int listCount() throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne(namespace + ".listCount");
+	}
+	
+	//목록 + 페이징 + 검색
+	@Override
+	public List<BoardVO> listSearch(SearchCriteria scri) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectList(namespace + ".listSearch", scri);
+	}
+	
+	//검색 결과 갯수
+	@Override
+	public int countSearch(SearchCriteria scri) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne(namespace + ".countSearch", scri);
 	}
 
 }

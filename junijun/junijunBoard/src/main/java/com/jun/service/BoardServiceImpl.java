@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Repository;
 
 import com.jun.domain.BoardVO;
+import com.jun.domain.Criteria;
+import com.jun.domain.SearchCriteria;
 import com.jun.persistence.BoardDAO;
 
 @Repository
@@ -14,9 +16,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Inject
 	private BoardDAO dao;
-	
-	private static String namespace = "com.jun.mappers.boardMapper";
-	
+		
 	//조회
 	@Override
 	public BoardVO read(int bno) throws Exception {
@@ -50,6 +50,32 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> list() throws Exception {
 		// TODO Auto-generated method stub
 		return dao.list();
+	}
+
+	//목록 + 페이징
+	@Override
+	public List<BoardVO> listPage(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.listPage(cri);
+	}
+	
+	//총 갯수
+	@Override
+	public int listCount() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.listCount();
+	}
+
+	@Override
+	public List<BoardVO> listSearch(SearchCriteria scri) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.listSearch(scri);
+	}
+
+	@Override
+	public int countSearch(SearchCriteria scri) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.countSearch(scri);
 	}
 
 }
