@@ -59,10 +59,15 @@
    //취소 
    $("#cancel_btn").click(function(){
 	  
-	   formObj.attr("action", "/board/boardRead?bno=" + $("#bno").val());
-	   formObj.attr("method", "get");
-	   formObj.submit();
-	
+	   if(!confirm("취소 하시겠습니까?")){
+		   return false;
+	   }else{ 
+		   self.location = "/board/boardRead?bno=${readReply.bno}"
+			   + "&page=${scri.page}"
+			   + "&perPageNum=${scri.perPageNum}"
+			   + "&searchType=${scri.searchType}"
+			   + "&keyword=${scri.keyword}"
+	   }
    });
    
    

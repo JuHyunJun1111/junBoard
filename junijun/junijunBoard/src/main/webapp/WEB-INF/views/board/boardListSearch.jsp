@@ -43,7 +43,7 @@
      <c:forEach items="${list}" var="list">
 	     <tr>
 	      	<td>${list.bno}</td>
-	      	<td><a href = "/board/boardRead?bno=${list.bno}">${list.title}</a></td>
+	      	<td><a href = "/board/boardRead?bno=${list.bno}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}">${list.title}</a></td>
 	      	<td>${list.writer}</td>
 	      	<td><fmt:formatDate value="${list.regDate}" pattern="yyyy-MM-dd" /></td>
 	     </tr>
