@@ -4,16 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>nav</title>
 </head>
 <body>
 
-	<ul>
+	<ul class="nav nav-pills">
+		<li><a href="/home">home</a></li>
 		<li><a href="/board/write">글 쓰기</a></li>
-		<!-- <li><a href="/board/boardList">목록</a></li>
-		<li><a href="/board/boardListPage">목록+페이징</a></li> -->
 		<li><a href="/board/boardListSearch">목록</a></li>
-		<li>로그인</li>
+		<li><a href="">로그인</a></li>
 	</ul>
 	
 	

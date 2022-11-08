@@ -18,6 +18,10 @@ public class PageMaker {
 	
 	private Criteria cri;
 	
+	public Criteria getCri() {
+		return cri;
+	}
+
 	public void setCri(Criteria cri) {
 		this.cri = cri;
 	}

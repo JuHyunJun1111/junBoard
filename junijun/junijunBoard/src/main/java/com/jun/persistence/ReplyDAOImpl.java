@@ -43,14 +43,14 @@ public class ReplyDAOImpl implements ReplyDAO {
 	@Override
 	public void replyUpdate(ReplyVO replyVO) throws Exception {
 		// TODO Auto-generated method stub
-		sql.update(namespace + ".updateReply");
+		sql.update(namespace + ".updateReply", replyVO);
 	}
 
 	@Override
 	public void replyDelete(ReplyVO replyVO) throws Exception {
 		System.out.println("댓글 삭제 진입");
 		// TODO Auto-generated method stub
-		sql.delete(namespace + ".deleteReply");
+		sql.delete(namespace + ".deleteReply", replyVO);
 	}
 
 }

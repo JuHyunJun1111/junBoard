@@ -195,7 +195,7 @@ public class BoardController {
 		System.out.println("reply scri 수정 :::" + scri);
 	 
 		ReplyVO replyVO = null;
-	 
+		
 		replyVO = replyService.readReplySelect(rno);
 	 
 		model.addAttribute("readReply", replyVO);
