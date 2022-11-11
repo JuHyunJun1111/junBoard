@@ -28,6 +28,7 @@
 <div id="container">	 
 	   <section id="container">
 	   
+	   <c:if test = "${msg eq null}">
 	    <form role="form" method="post" autocomplete="off">
 	    
 		     <div class="form-group">
@@ -42,16 +43,21 @@
 		     
 		     <div class="form-group">
 		     	 <label for="writer">작성자</label>
-		     	 <input type="text" id="writer" name="writer" class="form-control" style="width:500px;" />
+		     	 <input type="text" id="writer" name="writer" class="form-control" style="width:500px;" 
+		     	 				value="${member.userName}" readonly="readonly" />
 		     </div>
 		     
 		     <div class="form-group">
 		   		 <button type="submit" class="btn btn-success">작성</button>
 		     </div>   
 	    </form>
-	
+	   </c:if>
 	   </section>
-	
+		
+		<c:if test = "${msg eq false}">
+			<p>로그인을 해야 글을 작성할 수 있습니다.</p>
+			<p><a href="/home">홈으로</a>
+		</c:if>
 	<hr />
 	
 	   <footer>

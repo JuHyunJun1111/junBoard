@@ -9,11 +9,20 @@
 	Hello world!  
 </h1>
 
-<!--  <a href="/board/boardListSearch">글 작성</a></br>
- <a href="/board/boardListSearch">글 목록</a> -->
- 
+ <a href="/board/write">글 작성</a></br>
+ <a href="/board/boardListSearch">글 목록</a>
 
- <form role="form" method="post" autocomplete="off">
+
+<c:if test = "${member ne null}" >
+  <p>${member.userName} 님 환영합니다.</p>
+  
+  <a href="/member/logout">로그아웃</a>
+</c:if>
+
+<br>
+
+<c:if test = "${member eq null}" >
+ <form id="form" method="post" autocomplete="off" action="/member/login">
 	   <p>
 		    <label for="userId">아이디</label>
 		    <input type="text" id="userId" name="userId" />
@@ -23,10 +32,15 @@
 		    <input type="password" id="userPass" name="userPass" />
 	   </p>
 	   
-	   <p><button type="submit">로그인</button></p>
-	   
+	   <p><button type="submit">로그인</button></p>	   
 	   <p><a href="/member/register">회원가입</a></p>
 </form>
+</c:if>
+
+<c:if test = "${msg eq false}">
+	<p style="color:#f00;">로그인에 실패했습니다.</p>
+</c:if>
+
 
 </body>
 </html>
