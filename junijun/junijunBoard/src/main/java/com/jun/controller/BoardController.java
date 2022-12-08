@@ -119,7 +119,7 @@ public class BoardController {
 		model.addAttribute("replyList", replyList);
 	}
 	
-	//수정
+	//수정get
 	@RequestMapping(value = "/board/boardModify", method = RequestMethod.GET)
 	public void getModify(@RequestParam("bno") int bno, @ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
 		log.info("글 수정 시작");
@@ -129,7 +129,7 @@ public class BoardController {
 		model.addAttribute("modify", vo);
 		model.addAttribute("scri", scri);
 	}
-	//수정get
+	//수정
 	@RequestMapping(value = "/board/boardModify", method = RequestMethod.POST)
 	public String postModify(BoardVO vo, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception {
 		log.info("글 수정");

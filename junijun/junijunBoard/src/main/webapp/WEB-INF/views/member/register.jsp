@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+
 </head>
 <body>
 	<h2>회원가입</h2>
@@ -13,7 +15,13 @@
 		 <p>
 		  <label for="userId">아이디</label>
 		  <input type="text" id="userId" name="userId" />
+		  <button type="button" id="idChk">중복체크</button>
 		 </p>  
+		 
+		 
+		 <p id="result">
+		 	<span class="msg">아이디를 확인하세요.</span>
+		 </p>
 		 
 		 <p>
 		  <label for="userPass">패스워드</label>
@@ -26,7 +34,7 @@
 		 </p>
 		 
 		 <p>
-		   <button type="submit" id="submit" >가입</button>  
+		   <button type="submit" id="submit" disabled="disabled" >가입</button>  
 		 </p>
 		 
 		 <p>
@@ -35,4 +43,47 @@
 	</form>	 
 
 </body>
+
+<script>
+$("#idChk").click(function(){
+	var param = {userId : $("#userId").val()};
+	
+	const json = JSON.stringify(param);
+	
+	console.log("param ::: " + json);
+	
+	$.ajax({
+		url : "/member/idChk" ,
+		type : "post",
+		data : param, 
+		success : function(data) {
+			
+			if(data == 1) {
+				$("#result .msg").text("사용불가"); 
+				$("#result .msg").attr("style", "color:#f00")
+				
+				$("#submit").attr("disabled", true);
+			}else {
+				$("#result .msg").text("사용가능");
+			    $("#result .msg").attr("style", "color:#00f");
+			    
+			    $("#submit").attr("disabled", false);
+			}
+		}		
+	});
+	
+});
+
+$("#userId").keyup(function(){
+	 $("#result .msg").text("아이디를 확인해주십시오.");
+	 $("#result .msg").attr("style", "color:#000");
+	 
+	 $("#submit").attr("disabled", "disabled");
+	 
+	});
+
+
+
+
+</script>
 </html>

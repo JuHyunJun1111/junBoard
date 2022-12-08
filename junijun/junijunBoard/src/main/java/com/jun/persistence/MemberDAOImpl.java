@@ -30,7 +30,8 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public MemberVO login(MemberVO memberVO) throws Exception {
 		// TODO Auto-generated method stub
-		return sql.selectOne(namesapce + ".login", memberVO);
+		//return sql.selectOne(namesapce + ".login", memberVO);
+		return sql.selectOne(namesapce + ".loginBcrypt", memberVO);
 	}
 
 	
@@ -41,5 +42,21 @@ public class MemberDAOImpl implements MemberDAO {
 		sql.update(namesapce + ".modify", memberVO);
 		
 	}
+
+	//회원탈퇴
+	@Override
+	public void delete(MemberVO memberVO) throws Exception {
+		// TODO Auto-generated method stub
+		sql.delete(namesapce + ".delete", memberVO);
+		
+	}
+
+	//아이디 중복체크 
+	@Override
+	public MemberVO idChk(String userId) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne(namesapce + ".idChk", userId);
+	}
+	
 
 }

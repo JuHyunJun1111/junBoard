@@ -16,6 +16,8 @@
 <c:if test = "${member ne null}" >
   <p>${member.userName} 님 환영합니다.</p>
   
+  <a href="/member/modify">회원정보 수정</a>
+  <a href="/member/delete">회원탈퇴</a>
   <a href="/member/logout">로그아웃</a>
 </c:if>
 
@@ -36,6 +38,8 @@
 	   <p><a href="/member/register">회원가입</a></p>
 </form>
 </c:if>
+
+<input type="hidden"  value="${member}">
 
 <c:if test = "${msg eq false}">
 	<p style="color:#f00;">로그인에 실패했습니다.</p>

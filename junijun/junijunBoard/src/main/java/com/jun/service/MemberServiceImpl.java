@@ -36,4 +36,19 @@ public class MemberServiceImpl implements MemberService {
 		dao.modify(memberVO);
 	}
 
+	//회원 탈퇴
+	@Override
+	public void delete(MemberVO memberVO) throws Exception {
+		// TODO Auto-generated method stub
+		dao.delete(memberVO);
+		
+	}
+
+	//아이디 중복 체크
+	@Override
+	public MemberVO idChk(String userId) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.idChk(userId);
+	}
+
 }
