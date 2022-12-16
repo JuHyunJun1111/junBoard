@@ -5,9 +5,11 @@
 <!DOCTYPE html>
 <html>
 <ul>
-	<li>로그인</li>
 	<li>
-		<a href = "/member/signup">회원가입</a>
+		<a href = "/member/memberSignin">로그인</a>
+	</li>
+	<li>
+		<a href = "/member/memberSignup">회원가입</a>
 	</li>	
 </ul>
 

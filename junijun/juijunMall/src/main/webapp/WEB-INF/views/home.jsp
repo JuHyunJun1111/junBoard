@@ -5,10 +5,17 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
+ <header>
+    	<%@include file = "include/header.jsp"  %> 
+ </header>
+ <nav>
+		<%@include file = "include/nav.jsp"  %> 
+ </nav>
 
-<P>  The time on the server is ${serverTime}. </P>
+
 </body>
+
+<footer>
+  	<%@include file = "include/footer.jsp"  %>   
+ </footer>
 </html>
