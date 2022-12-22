@@ -24,8 +24,15 @@
 				/WEB-INF/spring/appServlet/servlet-context.xml
 				/WEB-INF/spring/spring-security.xml
 			</param-value>
+			
 		</init-param>
+			<init-param>
+			<param-name>throwExceptionIfNoHandlerFound</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		
 		<load-on-startup>1</load-on-startup>
+	
 	</servlet>
 		
 	<servlet-mapping>
@@ -46,5 +53,42 @@
 		<filter-name>encoding</filter-name> 
 		<servlet-name>appServlet</servlet-name>
 	</filter-mapping>
+	
+	<!-- 에러페이지 추가 -->
+	<error-page>
+			<error-code>400</error-code>
+			<location>/error400</location>
+	</error-page>
+	
+	<error-page>
+			<error-code>403</error-code>
+			<location>/error403</location>
+	</error-page>
+	
+	<error-page>
+			<error-code>404</error-code>
+			<location>/error404</location>
+	</error-page>
+	
+	<error-page>
+			<error-code>405</error-code>
+			<location>/error405</location>
+	</error-page>
+	
+	<error-page>
+			<error-code>500</error-code>
+			<location>/error500</location>
+	</error-page>
+	
+	<error-page>
+			<error-code>503</error-code>
+			<location>/common/error/503</location>
+	</error-page>
+	
+	<error-page>
+		<exception-type>java.lang.NullPointerException</exception-type>
+		<location>/exception</location>
+	</error-page>
+	
 
 </web-app>

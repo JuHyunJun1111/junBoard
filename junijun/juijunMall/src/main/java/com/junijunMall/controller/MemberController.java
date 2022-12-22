@@ -62,10 +62,19 @@ public class MemberController {
 		
 		//로그인 데이터
 		MemberVO login = memberService.memberSignin(memberVO);
+		
+		System.out.println("login ::: " + login);
+		
+		if(login == null) {
+			rttr.addFlashAttribute("msg", true);
+			return "redirect:/member/memberSignin";
+		}
+		
 		//로그인 세션
 		HttpSession session = request.getSession();
 		
 		boolean pwdMatch = passEncoder.matches(memberVO.getUserPass(), login.getUserPass()); //true or false 
+		System.out.println("pwdMatch ::: " + pwdMatch);
 		
 		if(login != null && pwdMatch) {
 			session.setAttribute("member", login);
