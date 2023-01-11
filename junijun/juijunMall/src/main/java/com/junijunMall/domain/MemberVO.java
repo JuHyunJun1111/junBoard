@@ -72,7 +72,7 @@ public class MemberVO {
 	
 	@Override
 	public String toString() {
-		return " login [userId=" + userId + ", userPass=" + userPass + " , userName=" + userName + "]";
+		return " login [userId=" + userId + ", userPass=" + userPass + " , userName=" + userName + ", verify=" + verify + "]";
 	}
 	
 	

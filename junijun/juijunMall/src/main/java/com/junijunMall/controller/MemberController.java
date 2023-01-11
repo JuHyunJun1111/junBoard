@@ -3,6 +3,7 @@ package com.junijunMall.controller;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,13 +29,15 @@ public class MemberController {
 	@Autowired
 	BCryptPasswordEncoder passEncoder;
 	
+	
+	
 	//회원가입 
-	@GetMapping("/member/memberSignup")
+	@GetMapping("/memberSignup.do")
 	public void getMemberSingup() throws Exception {
 		logger.info(":::::::회원가입 창 이동:::::::");
 	}
 	
-	@PostMapping("/member/memberSignup")
+	@PostMapping("/memberSignup.do")
 	public String getMemberSingup(MemberVO memberVO) throws Exception {
 		logger.info(":::::::회원가입 시작:::::::");
 		
@@ -47,28 +50,30 @@ public class MemberController {
 		
 		memberService.memberSingup(memberVO);
 		
-		return "redirect:/home";
+		return "redirect:/home.do";
 	}
 	
 	//로그인 
-	@GetMapping("/member/memberSignin")
-	public void getMemberSignin() throws Exception{
+	@GetMapping("/memberSignin.do")
+	public String getMemberSignin() throws Exception{
+		//model.addAttribute("msg", true);
 		logger.info(":::::::로그인 이동:::::::");
+		return "/member/memberSignin";
 	}
 	
-	@PostMapping("/member/memberSignin")
+	@PostMapping("/memberSignin.do")
 	public String postMemberSignin(MemberVO memberVO, HttpServletRequest request, RedirectAttributes rttr) throws Exception{
 		logger.info(":::::::로그인 시작:::::::");
+		
 		
 		//로그인 데이터
 		MemberVO login = memberService.memberSignin(memberVO);
 		
-		System.out.println("login ::: " + login);
-		
 		if(login == null) {
+			System.out.println("에러메시지1");
 			rttr.addFlashAttribute("msg", true);
-			return "redirect:/member/memberSignin";
-		}
+			return "redirect:/memberSignin.do";
+		}	
 		
 		//로그인 세션
 		HttpSession session = request.getSession();
@@ -76,26 +81,35 @@ public class MemberController {
 		boolean pwdMatch = passEncoder.matches(memberVO.getUserPass(), login.getUserPass()); //true or false 
 		System.out.println("pwdMatch ::: " + pwdMatch);
 		
+		
+		
+		System.out.println("memberVO ::: " + memberVO);
+		System.out.println("login ::: " + login);
+		
+	
+		
+		
 		if(login != null && pwdMatch) {
 			session.setAttribute("member", login);
 		}else {
 			session.setAttribute("member", null);
+			System.out.println("에러메시지2");
 			rttr.addFlashAttribute("msg", false);
-			
-			return "redirect:/member/memberSignin";
+			//JOptionPane.showMessageDialog(null, "로그인에 실패하였습니다.", "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
+			return "redirect:/memberSignin.do";
 		}
 		
-		return "redirect:/home";
+		return "redirect:/home.do";
 	}
 	
 	//로그아웃 
-	@GetMapping("/member/memberSignout")
+	@GetMapping("/memberSignout.do")
 	public String memberSignout(HttpSession session) throws Exception {
 		logger.info(":::::::로그아웃:::::::");
 		
 		memberService.memberSignout(session);
 		
-		return "redirect:/home";
+		return "redirect:/home.do";
 	}
 
 }

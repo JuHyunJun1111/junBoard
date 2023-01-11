@@ -25,7 +25,7 @@ public class ErrorController {
 		return "/common/error";
 	}
 	
-	@GetMapping("/error404") 
+	@GetMapping("/error404.do") 
 	public String error404(Model model) {
 		logger.error("404 에러발생");
 		model.addAttribute("msg", "요청하신 페이지는 없습니다.");
